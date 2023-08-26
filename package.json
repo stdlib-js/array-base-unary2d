@@ -1,6 +1,6 @@
 {
   "name": "@stdlib/array-base-unary2d",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Apply a unary callback to elements in a two-dimensional nested input array and assign results to elements in a two-dimensional nested output array.",
   "license": "Apache-2.0",
   "author": {
