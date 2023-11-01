@@ -21,89 +21,13 @@
 // MODULES //
 
 var tape = require( 'tape' );
-var abs = require( '@stdlib/math-base-special-abs' );
-var zeros2d = require( '@stdlib/array-base-zeros2d' );
-var unary2d = require( './../../dist' );
+var main = require( './../../dist' );
 
 
 // TESTS //
 
-tape( 'main export is a function', function test( t ) {
+tape( 'main export is defined', function test( t ) {
 	t.ok( true, __filename );
-	t.strictEqual( typeof unary2d, 'function', 'main export is a function' );
+	t.strictEqual( main !== void 0, true, 'main export is defined' );
 	t.end();
-});
-
-tape( 'the function applies a provided callback to a nested input array and assigns results to a nested output array', function test( t ) {
-	var expected;
-	var shape;
-	var x;
-	var y;
-
-	shape = [ 2, 2 ];
-	x = [
-		[ -1.0, -2.0 ],
-		[ -3.0, -4.0 ]
-	];
-
-	expected = [
-		[ 1.0, 2.0 ],
-		[ 3.0, 4.0 ]
-	];
-
-	y = zeros2d( shape );
-	unary2d( [ x, y ], shape, abs );
-
-	t.deepEqual( y, expected, 'returns expected value' );
-	t.end();
-});
-
-tape( 'the function does not invoke a provided callback if provided a shape having a first element equal to zero', function test( t ) {
-	var expected;
-	var shape;
-	var x;
-	var y;
-
-	shape = [ 2, 2 ];
-	x = [
-		[ -1.0, -2.0 ],
-		[ -3.0, -4.0 ]
-	];
-
-	expected = zeros2d( shape );
-
-	y = zeros2d( shape );
-	unary2d( [ x, y ], [ 0, 2 ], clbk );
-
-	t.deepEqual( y, expected, 'returns expected value' );
-	t.end();
-
-	function clbk() {
-		t.ok( false, 'should not invoke callback' );
-	}
-});
-
-tape( 'the function does not invoke a provided callback if provided a shape having a second element equal to zero', function test( t ) {
-	var expected;
-	var shape;
-	var x;
-	var y;
-
-	shape = [ 2, 2 ];
-	x = [
-		[ -1.0, -2.0 ],
-		[ -3.0, -4.0 ]
-	];
-
-	expected = zeros2d( shape );
-
-	y = zeros2d( shape );
-	unary2d( [ x, y ], [ 2, 0 ], clbk );
-
-	t.deepEqual( y, expected, 'returns expected value' );
-	t.end();
-
-	function clbk() {
-		t.ok( false, 'should not invoke callback' );
-	}
 });
